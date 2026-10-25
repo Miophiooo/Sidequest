@@ -1,0 +1,101 @@
+name: Flutter CI
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+  workflow_dispatch:
+
+env:
+  # Keep in sync with codemagic.yaml.
+  FLUTTER_VERSION: "3.47.7"
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Static analysis
+        run: flutter analyze
+
+      - name: Unit tests
+        run: flutter test
+
+  # Needs the repository secret GOOGLE_SERVICES_JSON (content of
+  # android/app/google-services.json for app.sidequest). Without it the job
+  # only leaves a notice. Debug build, so no release keystore is needed.
+  android-build-smoke:
+    runs-on: ubuntu-latest
+    needs: quality
+    env:
+      GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+    steps:
+      - name: Skip notice
+        if: env.GOOGLE_SERVICES_JSON == ''
+        run: echo "::notice::GOOGLE_SERVICES_JSON secret is not set - Android build skipped."
+
+      - name: Checkout
+        if: env.GOOGLE_SERVICES_JSON != ''
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        if: env.GOOGLE_SERVICES_JSON != ''
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Setup Flutter
+        if: env.GOOGLE_SERVICES_JSON != ''
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+
+      - name: Write google-services.json
+        if: env.GOOGLE_SERVICES_JSON != ''
+        run: printf '%s' "$GOOGLE_SERVICES_JSON" > android/app/google-services.json
+
+      - name: Android debug build
+        if: env.GOOGLE_SERVICES_JSON != ''
+        run: |
+          flutter pub get
+          flutter build apk --debug
+
+  # macOS minutes count 10x on private repos; iOS builds run on Codemagic.
+  # Start this one manually (Actions -> Flutter CI -> Run workflow) if needed.
+  ios-build-smoke:
+    runs-on: macos-latest
+    needs: quality
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+
+      - name: Install dependencies
+        run: |
+          flutter config --no-enable-swift-package-manager
+          flutter pub get
+
+      - name: iOS release build (no signing)
+        run: flutter build ios --release --no-codesign

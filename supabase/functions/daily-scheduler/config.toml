@@ -1,0 +1,3 @@
+# Allow cron/scheduler calls without Supabase JWT.
+# We still secure the endpoint via a shared secret header.
+verify_jwt = false

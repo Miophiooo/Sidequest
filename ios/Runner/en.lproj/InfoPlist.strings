@@ -1,0 +1,6 @@
+/* Permission texts shown by iOS (English). */
+"NSContactsUsageDescription" = "SideQuest matches your contacts only on your device to suggest friends. Contacts are never uploaded.";
+"NSCameraUsageDescription" = "SideQuest needs the camera so you can take photos for quests and duels.";
+"NSMicrophoneUsageDescription" = "SideQuest uses the microphone to optionally record live photos with sound.";
+"NSPhotoLibraryUsageDescription" = "SideQuest needs access to your photos so you can pick images.";
+"NSPhotoLibraryAddUsageDescription" = "SideQuest saves images to your library when you export them.";

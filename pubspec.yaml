@@ -1,0 +1,161 @@
+name: nummwe3
+description: "SideQuest – Daily photo challenges with friends."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.1
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  firebase_core: ^3.11.0
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.8
+  supabase_flutter: ^2.12.0
+  image_picker: ^1.1.2
+  intl: ^0.20.2
+  google_fonts: ^6.1.0
+  shared_preferences: ^2.3.2
+  flutter_local_notifications: ^17.1.2
+  firebase_messaging: ^15.1.3
+  firebase_analytics: ^11.3.6
+  timezone: ^0.9.4
+  flutter_contacts: ^2.0.2
+  url_launcher: ^6.3.1
+  share_plus: ^10.1.4
+  scrollable_positioned_list: ^0.3.8
+  image: ^4.8.0
+  video_player: ^2.9.5
+  flutter_native_splash: ^2.4.1+1
+  cached_network_image: ^3.4.1
+  # Direct dependency (was transitive via cached_network_image): we subclass
+  # CacheManager/HttpFileService to sign private-bucket storage URLs at fetch
+  # time. See lib/core/signed_storage_media.dart.
+  flutter_cache_manager: ^3.4.1
+  google_sign_in: ^6.2.2
+  sign_in_with_apple: ^6.1.4
+  crypto: ^3.0.6
+  gal: ^2.3.1
+  firebase_crashlytics: ^4.3.10
+  package_info_plus: ^9.0.1
+  app_links: ^6.4.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/splash_brand.png
+    - assets/login_hero.png
+    - assets/poop_outline.png
+    - assets/poop_filled.png
+    - assets/badges/
+    # Inter + Nunito, bundled so text never waits on (or leaks to) Google's
+    # font servers. Filenames must match google_fonts' naming.
+    - assets/google_fonts/
+
+flutter_native_splash:
+  # Pure black matches the baked-in background of the SQ logo PNG so there
+  # is no visible square edge where the image meets the splash canvas.
+  color: "#000000"
+  image: assets/splash_brand.png
+  android: true
+  ios: true
+  web: false
+  # Android 12+ ALWAYS clips the splash icon to a circle at the system level.
+  # If `image:` is omitted, Android falls back to the launcher icon — which
+  # gets masked weird and produces the gold/tinted ring users were seeing.
+  # Provide our own foreground asset (transparent canvas, SQ centered) and a
+  # matching solid black icon background so the circular mask just frames the
+  # SQ cleanly. Our Flutter `SplashScreen` widget still takes over a few ms
+  # later for the full un-clipped logo.
+  android_12:
+    color: "#000000"
+    image: assets/app_icon_foreground.png
+    icon_background_color: "#000000"
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/to/resolution-aware-images
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/to/asset-from-package
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/to/font-from-package
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: assets/app_icon.png
+  adaptive_icon_background: "#111418"
+  adaptive_icon_foreground: assets/app_icon_foreground.png
+  # Foreground PNG itself is now zoomed (SQ fills ~95% of the canvas),
+  # so we drop the wrapper inset to 0 — circle-clipping launchers still hit
+  # the rounded inner shape, not the SQ letters themselves.
+  adaptive_icon_foreground_inset: 0
+  min_sdk_android: 21
+  remove_alpha_ios: true

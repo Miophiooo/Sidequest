@@ -1,0 +1,55 @@
+# Codemagic CI config for SideQuest.
+#
+# Builds an UNSIGNED iOS RELEASE build (no Apple Developer account needed)
+# and packages it into a proper .ipa on the macOS build machine — so the
+# symlinks and file permissions inside the app bundle stay intact.
+#
+# The resulting `SideQuest.ipa` can be installed onto your own iPhone with
+# Sideloadly / AltStore using a free Apple ID.
+#
+# After pushing this file to GitHub, pick the "ios-unsigned-release"
+# workflow in Codemagic and start a build.
+
+workflows:
+  ios-unsigned-release:
+    name: iOS Unsigned Release (Sideload)
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    environment:
+      # Pinned so builds stay reproducible; bump together with
+      # .github/workflows/flutter-ci.yml.
+      flutter: 3.47.7
+      xcode: latest
+      cocoapods: default
+    scripts:
+      - name: Disable Swift Package Manager
+        # Newer Flutter stable enables SwiftPM by default and migrates the
+        # Xcode project during the build — but SwiftPM device builds demand a
+        # Development Team even with --no-codesign, breaking unsigned builds.
+        # CocoaPods handles all plugins fine, so force the old path.
+        script: flutter config --no-enable-swift-package-manager
+      - name: Get Flutter packages
+        script: flutter pub get
+      - name: Install CocoaPods dependencies
+        script: |
+          cd ios
+          pod install
+      - name: Flutter build iOS (release, unsigned)
+        # --release fixes the "debug mode apps can only be launched from
+        # Flutter tooling" error. --no-codesign skips Apple signing.
+        script: flutter build ios --release --no-codesign
+      - name: Package Runner.app into a .ipa
+        script: |
+          cd build/ios/iphoneos
+          mkdir -p Payload
+          mv Runner.app Payload/
+          zip -r9 SideQuest.ipa Payload
+    artifacts:
+      - build/ios/iphoneos/SideQuest.ipa
+    publishing:
+      email:
+        recipients:
+          - you@example.com
+        notify:
+          success: true
+          failure: true

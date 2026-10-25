@@ -1,0 +1,6 @@
+/* Berechtigungstexte, die iOS anzeigt (Deutsch). */
+"NSContactsUsageDescription" = "SideQuest gleicht deine Kontakte nur auf deinem Gerät ab, um dir Freunde vorzuschlagen. Kontakte werden nicht hochgeladen.";
+"NSCameraUsageDescription" = "SideQuest braucht die Kamera, damit du Fotos für Quests und Duelle aufnehmen kannst.";
+"NSMicrophoneUsageDescription" = "SideQuest nutzt das Mikrofon, um Live-Fotos optional mit Ton aufzunehmen.";
+"NSPhotoLibraryUsageDescription" = "SideQuest braucht Zugriff auf deine Fotos, damit du Bilder auswählen kannst.";
+"NSPhotoLibraryAddUsageDescription" = "SideQuest speichert Bilder in deiner Mediathek, wenn du sie exportierst.";

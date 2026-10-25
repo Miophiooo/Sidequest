@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SideQuest bestaetigen</title>
+  </head>
+  <body style="margin:0;padding:0;background:#0d1117;color:#f5f7fb;font-family:Arial,sans-serif;">
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#0d1117;padding:32px 16px;">
+      <tr>
+        <td align="center">
+          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:620px;background:linear-gradient(180deg,#141b23 0%,#10161d 100%);border:1px solid #283341;border-radius:28px;overflow:hidden;">
+            <tr>
+              <td style="padding:32px 32px 12px 32px;">
+                <div style="display:inline-block;padding:8px 14px;border-radius:999px;background:rgba(190,255,92,0.12);border:1px solid rgba(190,255,92,0.28);color:#beff5c;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">
+                  SideQuest
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0 32px 8px 32px;">
+                <h1 style="margin:0;font-size:38px;line-height:1.05;font-weight:800;color:#ffffff;">
+                  Bestaetige deine
+                  <span style="color:#beff5c;">E-Mail</span>
+                </h1>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0 32px 0 32px;">
+                <p style="margin:0;font-size:17px;line-height:1.7;color:#c8d2df;">
+                  Dein SideQuest-Account ist fast startklar. Gib diesen Code in der
+                  App ein und du bist direkt drin.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:28px 32px 8px 32px;">
+                <div style="display:inline-block;padding:18px 22px;border-radius:20px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);">
+                  <p style="margin:0 0 10px 0;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#8b99aa;">
+                    Dein bestaetigungscode
+                  </p>
+                  <div style="font-size:34px;line-height:1;font-weight:800;letter-spacing:0.28em;color:#ffffff;">
+                    {{ .Token }}
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:12px 32px 12px 32px;">
+                <p style="margin:0;font-size:13px;line-height:1.7;color:#8b99aa;">
+                  Wenn du lieber direkt per Link bestaetigen willst, kannst du auch
+                  diesen Button verwenden:
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0 32px 12px 32px;">
+                <a
+                  href="{{ .ConfirmationURL }}"
+                  style="display:inline-block;padding:16px 24px;border-radius:16px;background:#beff5c;color:#0b0f14;text-decoration:none;font-size:16px;font-weight:800;"
+                >
+                  E-Mail jetzt bestaetigen
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0 32px 0 32px;">
+                <p style="margin:0;font-size:13px;line-height:1.7;color:#8b99aa;">
+                  Falls der Button nicht funktioniert, kopiere diesen Link in deinen Browser:
+                </p>
+                <p style="margin:12px 0 0 0;font-size:13px;line-height:1.7;word-break:break-all;color:#9fe870;">
+                  {{ .ConfirmationURL }}
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:28px 32px 32px 32px;">
+                <div style="padding:18px 20px;border-radius:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);">
+                  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#ffffff;">
+                    Warum du diese Mail bekommst
+                  </p>
+                  <p style="margin:0;font-size:13px;line-height:1.7;color:#9caabc;">
+                    Jemand hat mit dieser Adresse einen SideQuest-Account erstellt. Wenn du
+                    das nicht warst, kannst du diese Nachricht einfach ignorieren.
+                  </p>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

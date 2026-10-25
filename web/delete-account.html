@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>SideQuest - Delete Account</title>
+    <style>
+      :root {
+        --bg: #111418;
+        --panel: #181c21;
+        --panel-2: #20262d;
+        --text: #f3f5f7;
+        --muted: #a7b0ba;
+        --accent: #a6d97a;
+        --accent-strong: #7fc44c;
+        --danger: #d96d6d;
+        --border: rgba(255, 255, 255, 0.08);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(166, 217, 122, 0.12), transparent 28%),
+          radial-gradient(circle at bottom right, rgba(127, 196, 76, 0.08), transparent 24%),
+          var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      .card {
+        width: min(100%, 760px);
+        background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent), var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(166, 217, 122, 0.12);
+        color: var(--accent);
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(30px, 5vw, 52px);
+        line-height: 1.02;
+      }
+
+      p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.55;
+        font-size: 16px;
+      }
+
+      .grid {
+        margin-top: 24px;
+        display: grid;
+        gap: 16px;
+      }
+
+      .panel {
+        background: var(--panel-2);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 18px;
+      }
+
+      .panel h2 {
+        margin: 0 0 10px;
+        font-size: 18px;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      a.button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 18px;
+        padding: 14px 18px;
+        border-radius: 999px;
+        background: var(--accent);
+        color: #0f1215;
+        text-decoration: none;
+        font-weight: 800;
+      }
+
+      a.button:hover {
+        background: var(--accent-strong);
+      }
+
+      .fineprint {
+        margin-top: 18px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      code {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.06);
+        padding: 2px 6px;
+        border-radius: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <div class="eyebrow">SideQuest</div>
+      <h1>Delete your account</h1>
+      <p>
+        This public page explains how to delete your SideQuest account and what
+        will be removed. You can also delete your account directly inside the app
+        from Settings.
+      </p>
+
+      <div class="grid">
+        <section class="panel">
+          <h2>What gets deleted</h2>
+          <ul>
+            <li>Your profile and username</li>
+            <li>Your posts, comments, likes, and messages</li>
+            <li>Associated account data kept for app operation</li>
+          </ul>
+        </section>
+
+        <section class="panel">
+          <h2>How to request deletion</h2>
+          <ul>
+            <li>Open the app and go to Settings &gt; Delete account.</li>
+            <li>If you cannot access the app, email <code>support@sidequest.app</code>.</li>
+            <li>Include the email address of the account you want deleted.</li>
+          </ul>
+          <a class="button" href="mailto:support@sidequest.app?subject=Delete%20my%20SideQuest%20account">
+            Email support
+          </a>
+        </section>
+
+        <section class="panel">
+          <h2>Need help?</h2>
+          <p>
+            For questions about deletion or privacy, contact
+            <code>support@sidequest.app</code>.
+          </p>
+        </section>
+      </div>
+
+      <p class="fineprint">
+        Public deletion page: <code>https://sidequest.app/delete-account.html</code>
+      </p>
+    </main>
+  </body>
+</html>
