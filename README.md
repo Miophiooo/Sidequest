@@ -6,13 +6,14 @@ Jeden Tag bekommen alle **dieselbe Foto-Aufgabe**, zu einer **zufälligen Uhrzei
 
 **Status:** Beta in Vorbereitung (TestFlight / Google Play Closed Test).
 
-<!-- Screenshots: lege Bilder unter docs/screenshots/ ab und verlinke sie hier, z. B.
-<p>
-  <img src="docs/screenshots/quest.png" width="200">
-  <img src="docs/screenshots/feed.png" width="200">
-  <img src="docs/screenshots/duel.png" width="200">
-</p>
--->
+<table>
+  <tr>
+    <td align="center"><img src="docs/screenshots/quest.jpg" width="200"><br><sub>Daily Quest</sub></td>
+    <td align="center"><img src="docs/screenshots/feed.jpg" width="200"><br><sub>Feed</sub></td>
+    <td align="center"><img src="docs/screenshots/freunde.jpg" width="200"><br><sub>Freunde & Duelle</sub></td>
+    <td align="center"><img src="docs/screenshots/profil.jpg" width="200"><br><sub>Profil</sub></td>
+  </tr>
+</table>
 
 ---
 
