@@ -1,7 +1,6 @@
 # SideQuest 📸
-
-> *A daily photo quest you play with your friends*
 > Just a side Project called „Sidequest“ 😉 where people should complete Challenges and post a photo of their completion. They can interact with these posts just like on Instagram and write messages with each other. A unique thing is that the photos are Live Photos like on apple in the photos app. So we will always have a hilarious moment
+> Now German
 Jeden Tag bekommen alle **dieselbe Foto-Aufgabe**, zu einer **zufälligen Uhrzeit**. Du hast 2 bis 5 Stunden, um dein Foto oder Live Photo zu posten. Danach siehst du, was deine Freunde daraus gemacht haben, und stimmst ab. Dazu kommen 1-gegen-1-Duelle, Streaks und ein täglicher „Crowd Favorite“.
 
 **Status:** Beta in Vorbereitung (TestFlight / Google Play Closed Test).
